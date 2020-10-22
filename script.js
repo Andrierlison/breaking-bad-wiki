@@ -5,10 +5,7 @@ function getName() {
     .then((respose) => respose.json())
     .then((data) =>
       data.map((data) => {
-        console.log(data.portrayed);
         let card = document.createElement("div");
-
-        let img = document.createElement("img");
 
         let listName = document.createElement("li");
 
@@ -16,11 +13,19 @@ function getName() {
 
         let listPortrayed = document.createElement("li");
 
+        let listStatus = document.createElement("li");
+
+        let img = document.createElement("img");
+
+        let status = document.createTextNode(`Status: ${data.status}`);
+
         let name = document.createTextNode(`Name: ${data.name}`);
 
         let birthday = document.createTextNode(`Birthday: ${data.birthday}`);
 
         let portrayed = document.createTextNode(`Portrayed: ${data.portrayed}`);
+
+        listStatus.appendChild(status);
 
         listBirthday.appendChild(birthday);
 
@@ -33,11 +38,11 @@ function getName() {
         card.appendChild(listName);
         card.appendChild(listPortrayed);
         card.appendChild(listBirthday);
+        card.appendChild(listStatus);
         card.appendChild(img);
 
         root.appendChild(card);
       })
     );
 }
-
 getName();
